@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\EngineLogo.png" />
+    <None Remove="Resources\Images\TruckLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,8 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\EngineLogo.png" />
-    <Resource Include="Resources\Images\LoadingImage.png" />
+    <Resource Include="Resources\Images\TruckLogo.png" />
   </ItemGroup>
 
 </Project>

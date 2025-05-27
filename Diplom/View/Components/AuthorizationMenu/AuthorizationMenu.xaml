@@ -20,8 +20,8 @@
             </Grid.RowDefinitions>
 
 
-            <Image Grid.Row="0" Style="{StaticResource EngineLogo}"/>
-            <TextBlock Text="EngineForge"
+            <Image Grid.Row="0" Style="{StaticResource TruckLogo}"/>
+            <TextBlock Text="Distributor"
                        Grid.Row="1"
                        Height="36"
                        VerticalAlignment="Center"
