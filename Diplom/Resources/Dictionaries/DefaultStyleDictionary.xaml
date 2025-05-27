@@ -1,0 +1,156 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:Diplom.Converters"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <converters:IsEqualOrLessThanConverter x:Key="CompareLessThanConverter"/>
+    <converters:IsEqualOrGreaterThanConverter x:Key="CompareGreaterThanConverter"/>
+    <system:Int32 x:Key="RedBorder">500</system:Int32>
+    <system:Int32 x:Key="GreenBorder">5000</system:Int32>
+
+
+    <Style x:Key="ListViewCellHighlightStyle"
+       TargetType="{x:Type ListView}">
+
+        <Setter Property="Background" Value="{StaticResource GainsboroGradientBrush}"/>
+        <Setter Property="View">
+            <Setter.Value>
+                <GridView>
+                    <GridViewColumn Header="Номер товара" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+
+                    <GridViewColumn Header="Количество на складе(шт)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <TextBlock x:Name="TableCell"
+                                               MinWidth="135"
+                                               FontSize="12"
+                                               TextAlignment="Center"
+                                               Text="{Binding StockQuantity}"/>
+                                </Border>
+
+
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding StockQuantity,
+                                                                   Converter={StaticResource CompareLessThanConverter},
+                                                                   ConverterParameter={StaticResource RedBorder}}"
+                                                 Value="True">
+
+                                        <Setter TargetName="TableCell" Property="Background"  Value="{StaticResource LiteRedGradientBrush}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StockQuantity,
+                                                                   Converter={StaticResource CompareGreaterThanConverter},
+                                                                   ConverterParameter={StaticResource GreenBorder}}"
+                                                 Value="True">
+
+                                        <Setter TargetName="TableCell" Property="Background"  Value="{StaticResource LiteGreenGradientBrush}"/>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Стоимость закупки(₽)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <TextBlock MinWidth="135"
+                                               FontSize="12"
+                                               TextAlignment="Center"
+                                               Text="{Binding PurchasePrice}"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Стоимость продажи(₽)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <TextBlock MinWidth="135"
+                                               FontSize="12"
+                                               TextAlignment="Center"
+                                               Text="{Binding SalePrice}"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Производитель" DisplayMemberBinding="{Binding Manufacturer}"/>
+                </GridView>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ListViewCellOnlyRedHighlightStyle"
+           TargetType="ListView">
+
+        <Setter Property="Background" Value="{StaticResource GainsboroGradientBrush}"/>
+        <Setter Property="View">
+            <Setter.Value>
+                <GridView>
+                    <GridViewColumn Header="Номер товара" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+
+                    <GridViewColumn Header="Количество на складе(шт)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <TextBlock x:Name="TableCell"
+                                               MinWidth="135"
+                                               FontSize="12"
+                                               TextAlignment="Center"
+                                               Text="{Binding StockQuantity}"/>
+                                </Border>
+
+
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding StockQuantity,
+                                                                   Converter={StaticResource CompareLessThanConverter},
+                                                                   ConverterParameter={StaticResource RedBorder}}"
+                                                 Value="True">
+
+                                        <Setter TargetName="TableCell" Property="Background"  Value="{StaticResource LiteRedGradientBrush}"/>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Стоимость закупки(₽)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <TextBlock MinWidth="135"
+                                               FontSize="12"
+                                               TextAlignment="Center"
+                                               Text="{Binding PurchasePrice}"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Стоимость продажи(₽)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <TextBlock MinWidth="135"
+                                               FontSize="12"
+                                               TextAlignment="Center"
+                                               Text="{Binding SalePrice}"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Производитель" DisplayMemberBinding="{Binding Manufacturer}"/>
+                </GridView>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

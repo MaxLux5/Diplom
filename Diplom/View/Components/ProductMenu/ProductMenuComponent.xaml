@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Diplom.View.Components.ProductMenu.ProductMenuComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diplom.View.Components.ProductMenu"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--Привязка команды к событию-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction
+                Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+    <ListView ItemsSource="{Binding Products}"
+              Style="{StaticResource ListViewCellHighlightStyle}">
+
+
+        <ListView.Resources>
+            <!--Контекстное меню для элементов ListView-->
+            <ContextMenu  x:Key="ItemContextMenu">
+                <!--DataContext'ом для контекстного меню будет соответствующий выделенный элемент, так что к команде привязываемся через RelativeSource-->
+                <MenuItem Header="Добавить"
+                          Command="{Binding Path=DataContext.AddProductCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
+                <MenuItem Header="Удалить"
+                          Command="{Binding Path=DataContext.DeleteProductCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"
+                          CommandParameter="{Binding .}"/>
+            </ContextMenu>
+        </ListView.Resources>
+
+        <ListView.ItemContainerStyle>
+            <Style TargetType="{x:Type ListViewItem}">
+                <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+            </Style>
+        </ListView.ItemContainerStyle>
+
+
+        <!--Контекстное меню для всей ListView-->
+        <ListView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Добавить" Command="{Binding AddProductCommand}"/>
+            </ContextMenu>
+        </ListView.ContextMenu>
+    </ListView>
+</UserControl>

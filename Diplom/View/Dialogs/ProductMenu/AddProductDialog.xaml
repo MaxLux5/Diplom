@@ -1,0 +1,106 @@
+﻿<Window x:Class="Diplom.View.Dialogs.ProductMenu.AddProductDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom.View.Dialogs.ProductMenu"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Добавление товара на склад"
+        MinWidth="300"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen">
+    <!--Привязка команды к событию-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="ContentRendered">
+            <i:InvokeCommandAction
+            Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="Укажите тип товара:"
+                   Margin="5"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"/>
+        <TextBox Text="{Binding TypeText, Mode=OneWayToSource}"
+                 Margin="5"
+                 Grid.Row="1"
+                 MaxLength="35"/>
+
+        <TextBlock Text="Укажите название:"
+                   Margin="5"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"/>
+        <TextBox Text="{Binding NameText, Mode=OneWayToSource}"
+                 Margin="5"
+                 Grid.Row="3"
+                 MaxLength="35"/>
+
+        <TextBlock Text="Укажите текущее количество(шт):"
+                   Margin="5"
+                   Grid.Row="4"
+                   VerticalAlignment="Center"/>
+        <toolkit:IntegerUpDown Value="{Binding StockQuantityValue, Mode=OneWayToSource}"
+                               Margin="5"
+                               Grid.Row="5"
+                               Minimum="0"
+                               TextAlignment="Left"/>
+
+        <TextBlock Text="Укажите cтоимость закупки(₽):"
+                   Margin="5"
+                   Grid.Row="6"
+                   VerticalAlignment="Center"/>
+        <toolkit:IntegerUpDown Value="{Binding PurchasePriceValue, Mode=OneWayToSource}"
+                               Margin="5"
+                               Grid.Row="7"
+                               Minimum="0"
+                               TextAlignment="Left"/>
+
+        <TextBlock Text="Укажите стоимость продажи(₽):"
+                   Margin="5"
+                   Grid.Row="8"
+                   VerticalAlignment="Center"/>
+        <toolkit:IntegerUpDown Value="{Binding SalePriceValue, Mode=OneWayToSource}"
+                               Margin="5"
+                               Grid.Row="9"
+                               Minimum="0"
+                               TextAlignment="Left"/>
+
+        <TextBlock Text="Укажите производителя:"
+                   Margin="5"
+                   Grid.Row="10"
+                   VerticalAlignment="Center"/>
+        <TextBox Text="{Binding ManufacturerText, Mode=OneWayToSource}"
+                 Margin="5"
+                 Grid.Row="11"
+                 MaxLength="35"/>
+
+        <Button Content="Заказать"
+                Grid.Row="12"
+                Width="70"
+                Height="25"
+                Command="{Binding AddProductCommand}"/>
+    </Grid>
+</Window>

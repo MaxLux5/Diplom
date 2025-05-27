@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Diplom.View.Screens.MenuScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diplom.View.Screens"
+             xmlns:product="clr-namespace:Diplom.View.Components.ProductMenu"
+             xmlns:purchase="clr-namespace:Diplom.View.Components.PurchaseMenu"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--Скрин меню-->
+    <TabControl>
+        <!--Первая вкладка в меню-->
+        <TabItem Header="Товары"
+                 Width="100">
+
+            <!--Меню управления материалами-->
+            <product:ProductMenuComponent DataContext="{Binding ProductMenuViewModel}"/>
+        </TabItem>
+        
+        <!--Вторая вкладка в меню-->
+        <TabItem Header="Закупки"
+                 Width="100">
+
+            <!--Меню управления закупками-->
+            <purchase:PurchaseMenuComponent DataContext="{Binding PurchaseMenuViewModel}"/>
+        </TabItem>
+    </TabControl>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Определение основных цветов-->
+    <Color x:Key="White">#EAEAEA</Color>
+    <Color x:Key="Blue">#83B3F3</Color>
+    <Color x:Key="LiteRed">#ed5555</Color>
+    <Color x:Key="LiteGreen">#55ed55</Color>
+    <Color x:Key="Gainsboro">Gainsboro</Color>
+
+    <!--Определение кистей, используемых для отрисовки градиентов-->
+    <LinearGradientBrush x:Key="DefaultBackgroundGradient">
+        <GradientStop Color="{StaticResource White}" Offset="0"/>
+        <GradientStop Color="{StaticResource Blue}" Offset="1"/>
+    </LinearGradientBrush>
+    <!--Костыль для того, чтобы установить привязку к Color-объекту-->
+    <LinearGradientBrush x:Key="LiteRedGradientBrush">
+        <GradientStop Color="{StaticResource LiteRed}"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LiteGreenGradientBrush">
+        <GradientStop Color="{StaticResource LiteGreen}"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GainsboroGradientBrush">
+        <GradientStop Color="{StaticResource Gainsboro}"/>
+    </LinearGradientBrush>
+
+</ResourceDictionary>
