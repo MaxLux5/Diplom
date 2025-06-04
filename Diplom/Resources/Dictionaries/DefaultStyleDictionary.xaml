@@ -29,6 +29,7 @@
                                                MinWidth="135"
                                                FontSize="12"
                                                TextAlignment="Center"
+                                               Background="WhiteSmoke"
                                                Text="{Binding StockQuantity}"/>
                                 </Border>
 
